@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ObservableInventory : Inventory {
     private List<IInventoryObserver> _observers = new List<IInventoryObserver>();
@@ -11,9 +12,9 @@ public class ObservableInventory : Inventory {
         _observers.Remove(observer);
     }
 
-    public new void Store(Pickupable item) {
-        _notifyObservers(item);
+    public override void Store(Pickupable item) {
         base.Store(item);
+        _notifyObservers(item);
     }
 
     private void _notifyObservers(Pickupable item) {

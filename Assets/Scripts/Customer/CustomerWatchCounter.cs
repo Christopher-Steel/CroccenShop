@@ -10,6 +10,7 @@ public class CustomerWatchCounter : MonoBehaviour, IInventoryObserver {
 
     public void Notify(Pickupable item) {
         Debug.Log("Notified");
+        Counter.Take();
         item.Interact(gameObject);
     }
 }

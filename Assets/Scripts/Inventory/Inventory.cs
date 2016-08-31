@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Inventory : MonoBehaviour {
     public Transform carryTransform;
@@ -8,12 +9,13 @@ public class Inventory : MonoBehaviour {
         return _slot == null;
     }
 
-    public void Store(Pickupable item) {
+    public virtual void Store(Pickupable item) {
         _slot = item;
         _attachItemToInventory(item);
     }
 
     public Pickupable Take() {
+        Assert.IsNotNull(_slot);
         Pickupable item = _slot;
 
         _slot = null;

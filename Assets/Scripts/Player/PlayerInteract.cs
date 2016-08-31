@@ -21,7 +21,6 @@ class PlayerInteract : MonoBehaviour, IClickObserver {
         AInteractable interactable = hit.transform.gameObject.GetComponent<AInteractable>();
 
         if (interactable != null) {
-            Debug.Log(string.Format("Interacting with {0}", interactable));
             _interactCoroutine = StartCoroutine(_waitToReachInteractable(interactable));
         }
     }
