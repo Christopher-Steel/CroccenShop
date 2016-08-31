@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 
 public class ClickService : MonoBehaviour {
-    public List<IClickObserver> observers = new List<IClickObserver>();
+    private List<IClickObserver> _observers = new List<IClickObserver>();
 
     public void AddObserver(IClickObserver observer) {
-        observers.Add(observer);
+        _observers.Add(observer);
     }
 
     public void RemoveObserver(IClickObserver observer) {
-        observers.Remove(observer);
+        _observers.Remove(observer);
     }
 
     public void Update() {
@@ -18,10 +18,12 @@ public class ClickService : MonoBehaviour {
 
             // Navigate to point clicked
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100)) {
-                foreach (IClickObserver observer in observers) {
-                    observer.Notify(hit);
-                }
+                _notifyObservers(hit);
             }
         }
+    }
+
+    private void _notifyObservers(RaycastHit hit) {
+        _observers.ForEach(x => x.Notify(hit));
     }
 }

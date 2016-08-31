@@ -23,8 +23,8 @@ public class Inventory : MonoBehaviour {
 
     private void _attachItemToInventory(Pickupable item) {
         item.gameObject.transform.parent = transform;
-        item.gameObject.transform.localPosition = carryTransform.localPosition;
-        item.gameObject.transform.localRotation = carryTransform.localRotation;
+        item.gameObject.transform.position = carryTransform.position;
+        item.gameObject.transform.rotation = carryTransform.rotation;
     }
 
     private void _detachItemFromInventory(Pickupable item) {

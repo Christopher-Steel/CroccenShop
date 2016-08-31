@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
+[RequireComponent(typeof(Inventory))]
 public class ItemSlotInteract : AInteractable {
-    private Inventory slotInventory; 
+    private Inventory slotInventory;
 
     public void Start() {
         InteractDistance = 1.4f;
@@ -10,7 +12,8 @@ public class ItemSlotInteract : AInteractable {
 
     public override void Interact(GameObject source) {
         Inventory sourceInventory = source.GetComponent<Inventory>();
-        Debug.Log("interacted w counter");
+
+        Assert.IsNotNull(sourceInventory);
         if (slotInventory.HasSpace()
             && !sourceInventory.HasSpace()) {
             slotInventory.Store(sourceInventory.Take());
