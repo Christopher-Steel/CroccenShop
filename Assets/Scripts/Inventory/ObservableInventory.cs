@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 public class ObservableInventory : Inventory {
     private List<IInventoryObserver> _observers = new List<IInventoryObserver>();
