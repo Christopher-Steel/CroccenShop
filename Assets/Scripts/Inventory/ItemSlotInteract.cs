@@ -2,11 +2,11 @@
 using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Inventory))]
-public class ItemSlotInteract : AInteractable {
+public class ItemSlotInteract : AProximityInteractable {
     private Inventory slotInventory;
 
-    public void Start() {
-        InteractDistance = 1.4f;
+    public override void Start() {
+        base.Start();
         slotInventory = GetComponent<Inventory>();
     }
 

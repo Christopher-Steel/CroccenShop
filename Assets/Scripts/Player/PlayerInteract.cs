@@ -18,10 +18,10 @@ class PlayerInteract : MonoBehaviour, IClickObserver {
     }
 
     private void _checkForInteractable(RaycastHit hit) {
-        AInteractable interactable = hit.transform.gameObject.GetComponent<AInteractable>();
+        IInteractable interactable = hit.transform.gameObject.GetComponent<IInteractable>();
 
         if (interactable != null) {
-            _interactCoroutine = StartCoroutine(_waitToReachInteractable(interactable));
+            _interactCoroutine = StartCoroutine(_waitAndInteract(interactable));
         }
     }
 
@@ -32,17 +32,10 @@ class PlayerInteract : MonoBehaviour, IClickObserver {
         }
     }
 
-    private IEnumerator _waitToReachInteractable(AInteractable interactable) {
-        float distance;
-        Vector3 differenceVector;
-
+    private IEnumerator _waitAndInteract(IInteractable interactable) {
         do {
-            yield return null;
-            differenceVector = interactable.transform.position - transform.position;
-            differenceVector.y = 0; // ignoring Y axis for proximity
-            distance = differenceVector.magnitude;
-            Debug.Log(string.Format("distance to interact: {0} < {1}", distance, interactable.InteractDistance));
-        } while ((distance) > interactable.InteractDistance);
+            yield return null; // Wait a frame
+        } while (!interactable.CanInteractWith(gameObject));
         interactable.Interact(gameObject);
         _interactCoroutine = null;
     }
