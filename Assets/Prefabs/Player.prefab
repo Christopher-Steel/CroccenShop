@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011125945612}
   m_Layer: 0
-  m_Name: CarrySpot
+  m_Name: CarryTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,6 +39,7 @@ GameObject:
   - 195: {fileID: 195000014209275982}
   - 114: {fileID: 114000013073811298}
   - 114: {fileID: 114000012665512812}
+  - 114: {fileID: 114000013363638640}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -120,7 +121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 984e0cf991a392c4a9eeed94bd832d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carryTransform: {fileID: 4000011125945612}
+  carryTarget: {fileID: 4000011125945612}
+  capacity: 1
 --- !u!114 &114000013073811298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,6 +132,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6813520d2ff51294c940aa0bc1dc6794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickService: {fileID: 0}
+--- !u!114 &114000013363638640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011793403190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6dd14ce21687e47ab840da65bcc77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clickService: {fileID: 0}

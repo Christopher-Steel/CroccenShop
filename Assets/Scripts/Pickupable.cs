@@ -5,7 +5,7 @@ public class Pickupable : AProximityInteractable {
         Inventory inv = source.GetComponent<Inventory>();
 
         if (inv != null
-            && inv.HasSpace()) {
+            && !inv.IsFull()) {
             inv.Store(this);
         }
     }

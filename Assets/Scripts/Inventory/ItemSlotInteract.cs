@@ -3,20 +3,21 @@ using UnityEngine.Assertions;
 
 [RequireComponent(typeof(Inventory))]
 public class ItemSlotInteract : AProximityInteractable {
-    private Inventory slotInventory;
+    private Inventory targetInventory;
 
     public override void Start() {
         base.Start();
-        slotInventory = GetComponent<Inventory>();
+        targetInventory = GetComponent<Inventory>();
     }
 
     public override void Interact(GameObject source) {
         Inventory sourceInventory = source.GetComponent<Inventory>();
 
         Assert.IsNotNull(sourceInventory);
-        if (slotInventory.HasSpace()
-            && !sourceInventory.HasSpace()) {
-            slotInventory.Store(sourceInventory.Take());
+        if (sourceInventory.IsEmpty()) {
+            sourceInventory.Store(targetInventory.TakeFirst());
+        } else if (!targetInventory.IsFull()) {
+            targetInventory.Store(sourceInventory.TakeFirst());
         }
     }
 }
