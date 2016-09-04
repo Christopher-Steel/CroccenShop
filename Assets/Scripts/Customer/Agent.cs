@@ -5,9 +5,10 @@ namespace Customer {
     public partial class Agent : MonoBehaviour {
         public Info info;
         public IState currentState { get; private set; }
+        public Vector3 destination;
 
         void Start() {
-            _changeState(new Waiting(this));
+            _changeState(new Entering(this));
         }
 
         void Update() {
