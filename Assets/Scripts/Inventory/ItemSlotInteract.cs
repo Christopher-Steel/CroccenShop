@@ -13,6 +13,7 @@ public class ItemSlotInteract : AProximityInteractable {
     public override void Interact(GameObject source) {
         Inventory sourceInventory = source.GetComponent<Inventory>();
 
+        // Only inventory bearers can interact with item slots
         Assert.IsNotNull(sourceInventory);
         if (sourceInventory.IsEmpty()) {
             sourceInventory.Store(targetInventory.TakeFirst());
