@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour {
     }
 
     public virtual void Store(Pickupable item) {
+        Assert.IsFalse(IsFull());
         _attachItemToInventory(item);
     }
 
