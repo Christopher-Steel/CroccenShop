@@ -8,7 +8,7 @@ namespace Customer {
         public Vector3 destination;
 
         void Start() {
-            _changeState(new Entering(this));
+            ChangeState(new Entering(this));
         }
 
         void Update() {
@@ -17,11 +17,11 @@ namespace Customer {
 
             nextState = currentState.OnUpdate();
             if (nextState != null) {
-                _changeState(nextState);
+                ChangeState(nextState);
             }
         }
 
-        private void _changeState(IState nextState) {
+        public void ChangeState(IState nextState) {
             if (currentState != null) {
                 currentState.OnExit();
             }
