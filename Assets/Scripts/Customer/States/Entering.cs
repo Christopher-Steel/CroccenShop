@@ -8,8 +8,7 @@ namespace Customer {
 
         public override void OnEnter() {
             Debug.Log("Entering");
-            var nav = _customer.GetComponent<NavMeshAgent>();
-            nav.destination = _customer.destination;
+            _customer.info.queue.Enqueue(_customer);
         }
 
         public override IState OnUpdate() {

@@ -6,6 +6,7 @@ namespace Customer {
         public struct Info {
             public ObservableInventory counter;
             public Transform door;
+            public Queue queue;
             public float spawnTime;
             public float patience;
         }

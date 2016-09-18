@@ -28,6 +28,7 @@ namespace Customer {
             if (!_inventory.IsFull()) {
                 _customer.info.counter.Take(item);
                 item.Interact(_customer.gameObject);
+                _customer.ChangeState(new Leaving(_customer));
             }
         }
     }

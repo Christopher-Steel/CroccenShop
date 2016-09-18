@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Collider))]
 public abstract class AProximityInteractable : MonoBehaviour, IInteractable {
     protected const float _INTERACTION_DISTANCE = 0.7f;
+    [System.NonSerialized]
     public Collider boundingBox;
 
     /// <summary>

@@ -6,10 +6,8 @@ namespace Customer {
 
         public override void OnEnter() {
             Debug.Log("Leaving");
-            var nav = _customer.GetComponent<NavMeshAgent>();
-            _customer.destination = _customer.info.door.position;
-            nav.destination = _customer.destination;
-
+            _customer.info.queue.Dequeue(_customer);
+            _customer.GoTo(_customer.info.door.position);
         }
     }
 }

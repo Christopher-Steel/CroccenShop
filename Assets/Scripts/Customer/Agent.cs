@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Customer {
     [RequireComponent(typeof(Inventory))]
@@ -7,7 +8,11 @@ namespace Customer {
         public IState currentState { get; private set; }
         public Vector3 destination;
 
+        private NavMeshAgent _nav;
+
         void Start() {
+            _nav = GetComponent<NavMeshAgent>();
+            Assert.IsNotNull(_nav);
             ChangeState(new Entering(this));
         }
 
@@ -27,6 +32,11 @@ namespace Customer {
             }
             currentState = nextState;
             currentState.OnEnter();
+        }
+
+        public void GoTo(Vector3 destination) {
+            this.destination = destination;
+            _nav.destination = this.destination;
         }
     }
 }

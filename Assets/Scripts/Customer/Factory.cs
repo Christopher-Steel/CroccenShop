@@ -18,11 +18,14 @@ namespace Customer {
             agent.info = info;
             agent.info.spawnTime = Time.timeSinceLevelLoad;
             customer.transform.position = info.door.position;
-            agent.ChangeState(new Entering(agent));
             return customer;
         }
 
         public IEnumerator Start() {
+            Create();
+            yield return new WaitForSeconds(3);
+            Create();
+            yield return new WaitForSeconds(3);
             Create();
             yield return new WaitForSeconds(3);
             Create();
