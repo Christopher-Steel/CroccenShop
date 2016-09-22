@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Customer {
-    public class Queue : MonoBehaviour {
+    public class Queue : MonoBehaviour, IInventoryObserver {
         /// <summary>
         /// Distance and direction between queueing customers
         /// </summary>
         public Vector3 extendVector;
+        public ObservableInventory counter;
 
         private List<Agent> _queueing;
         private Vector3 _tail;
@@ -14,6 +16,7 @@ namespace Customer {
         public void Start() {
             _queueing = new List<Agent>();
             _tail = transform.position;
+            counter.AddObserver(this);
         }
 
         public void Enqueue(Agent joining) {
@@ -37,9 +40,16 @@ namespace Customer {
         }
 
         public Agent FirstWaitingFor() {
-            if (_queueing.Count == 0) return null;
-            if (_queueing.Count == 1) return _queueing[0];
-            return _queueing[1];
+            return _queueing.FirstOrDefault();
+        }
+
+        public void Notify(Pickupable item) {
+            Agent customer = FirstWaitingFor();
+            if (customer == null) // Nobody queuing for this item yet
+                return;
+            counter.Take(item);
+            item.Interact(customer.gameObject);
+            customer.ChangeState(new Leaving(customer));
         }
     }
 }
