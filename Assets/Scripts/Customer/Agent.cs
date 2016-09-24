@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using System.Linq;
 
 namespace Customer {
     [RequireComponent(typeof(Inventory))]
@@ -37,6 +38,12 @@ namespace Customer {
         public void GoTo(Vector3 destination) {
             this.destination = destination;
             _nav.destination = this.destination;
+        }
+
+        public bool Wants(GameObject croccen) {
+            if (info.requirements == null)
+                return true;
+            return info.requirements.All(r => r.IsMet(croccen));
         }
     }
 }

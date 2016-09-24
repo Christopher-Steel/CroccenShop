@@ -39,12 +39,13 @@ namespace Customer {
             _tail -= extendVector;
         }
 
-        public Agent FirstWaitingFor() {
-            return _queueing.FirstOrDefault();
+        public Agent FirstWaitingFor(Pickupable item) {
+            return _queueing.Where(agent => agent.Wants(item.gameObject)).FirstOrDefault();
         }
 
         public void Notify(Pickupable item) {
-            Agent customer = FirstWaitingFor();
+            if (item == null) return; // TODO: fix the actual bug and remove this
+            Agent customer = FirstWaitingFor(item);
             if (customer == null) // Nobody queuing for this item yet
                 return;
             counter.Take(item);

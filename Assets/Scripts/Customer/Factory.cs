@@ -7,7 +7,7 @@ namespace Customer {
         public Agent.Info info;
         public GameObject customerTemplate;
 
-        public GameObject Create() {
+        public GameObject Create(IRequirement[] requirements = null) {
             var customer = Instantiate(customerTemplate);
             var inventory = customer.GetComponent<Inventory>();
             var agent = customer.GetComponent<Agent>();
@@ -17,16 +17,24 @@ namespace Customer {
 
             agent.info = info;
             agent.info.spawnTime = Time.timeSinceLevelLoad;
+            agent.info.requirements = requirements;
             customer.transform.position = info.door.position;
             return customer;
         }
 
         public IEnumerator Start() {
-            Create();
+            Create(new IRequirement[] {
+                new Requirements.HasColor(Croccen.Color.Green),
+                new Requirements.HasSize(Croccen.Size.Adult)
+            });
             yield return new WaitForSeconds(3);
-            Create();
+            Create(new IRequirement[] {
+                new Requirements.HasSize(Croccen.Size.Adult)
+            });
             yield return new WaitForSeconds(3);
-            Create();
+            Create(new IRequirement[] {
+                new Requirements.HasColor(Croccen.Color.Grey)
+            });
             yield return new WaitForSeconds(3);
             Create();
         }
