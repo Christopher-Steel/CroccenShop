@@ -15,9 +15,9 @@ public class EquipmentOrganiser : MonoBehaviour {
     /// Look for an empty EquipmentSlot of the right
     /// type, Equip the Equipment in it and return true.
     /// If no slot is found or none are empty, nothing
-    /// happens and this function returns false. 
+    /// happens and this function returns false.
     /// </summary>
-    void Equip(Equipment item) {
+    public void Equip(Equipment item) {
         foreach (EquipmentSlot slot in _slots) {
             if (slot.type == item.type && slot.IsEmpty()) {
                 slot.Equip(item);

@@ -68,6 +68,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Collector.cs" />
+    <Compile Include="Assets\EquipTest.cs" />
     <Compile Include="Assets\Scripts\AProximityInteractable.cs" />
     <Compile Include="Assets\Scripts\ClickService\ClickService.cs" />
     <Compile Include="Assets\Scripts\ClickService\IClickObserver.cs" />
@@ -76,12 +78,12 @@
     <Compile Include="Assets\Scripts\Croccen\Size.cs" />
     <Compile Include="Assets\Scripts\Customer\Agent.cs" />
     <Compile Include="Assets\Scripts\Customer\Factory.cs" />
+    <Compile Include="Assets\Scripts\Customer\IRequirement.cs" />
     <Compile Include="Assets\Scripts\Customer\IState.cs" />
     <Compile Include="Assets\Scripts\Customer\Info.cs" />
     <Compile Include="Assets\Scripts\Customer\Queue.cs" />
-    <Compile Include="Assets\Scripts\Customer\IRequirement.cs" />
-    <Compile Include="Assets\Scripts\Customer\Requirements\HasSize.cs" />
     <Compile Include="Assets\Scripts\Customer\Requirements\HasColor.cs" />
+    <Compile Include="Assets\Scripts\Customer\Requirements\HasSize.cs" />
     <Compile Include="Assets\Scripts\Customer\States\AState.cs" />
     <Compile Include="Assets\Scripts\Customer\States\Entering.cs" />
     <Compile Include="Assets\Scripts\Customer\States\Leaving.cs" />
@@ -96,6 +98,8 @@
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemSlotInteract.cs" />
     <Compile Include="Assets\Scripts\Inventory\ObservableInventory.cs" />
+    <Compile Include="Assets\Scripts\Level\CustomerScheduler.cs" />
+    <Compile Include="Assets\Scripts\Level\Visit.cs" />
     <Compile Include="Assets\Scripts\Pickupable.cs" />
     <Compile Include="Assets\Scripts\Player\Drop.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInteract.cs" />
@@ -103,6 +107,5 @@
     <Compile Include="Assets\Scripts\Spawner\ASpawner.cs" />
     <Compile Include="Assets\Scripts\Spawner\TriggerSpawner.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
