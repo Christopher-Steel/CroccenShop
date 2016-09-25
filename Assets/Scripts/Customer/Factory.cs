@@ -21,22 +21,5 @@ namespace Customer {
             customer.transform.position = info.door.position;
             return customer;
         }
-
-        public IEnumerator Start() {
-            Create(new IRequirement[] {
-                new Requirements.HasColor(Croccen.Color.Green),
-                new Requirements.HasSize(Croccen.Size.Adult)
-            });
-            yield return new WaitForSeconds(3);
-            Create(new IRequirement[] {
-                new Requirements.HasSize(Croccen.Size.Adult)
-            });
-            yield return new WaitForSeconds(3);
-            Create(new IRequirement[] {
-                new Requirements.HasColor(Croccen.Color.Grey)
-            });
-            yield return new WaitForSeconds(3);
-            Create();
-        }
     }
 }
