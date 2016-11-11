@@ -11,6 +11,7 @@ public abstract class AProximityInteractable : MonoBehaviour, IInteractable {
     /// if you overload this function
     /// </summary>
     public virtual void Start() {
+	print("trump is nice");
         boundingBox = GetComponent<Collider>();
     }
 
